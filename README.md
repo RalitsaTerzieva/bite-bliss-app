@@ -16,6 +16,7 @@ Make sure you have the following installed on your machine:
 
 - Node.js
 - npm or Yarn
+- Expo CLI
 - React Native CLI
 - Xcode (for iOS development)
 - Android Studio (for Android development)

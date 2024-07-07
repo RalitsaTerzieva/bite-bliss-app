@@ -27,5 +27,21 @@ Make sure you have the following installed on your machine:
    git clone https://github.com/yourusername/bite-bliss-app.git
    cd bite-bliss-app
    npm install
-   # or
-   yarn install
+
+2. Install CocoaPods dependencies (iOS only):
+   ```cd ios
+   pod install
+   cd .. 
+
+3. Start the Metro bundler:
+   ```npm start
+
+4. Run on iOS simulator (requires Xcode and macOS):
+   ```i
+
+5. Run on Android emulator/device (requires Android Studio and setup):
+   ```a
+
+6. Alternatively, for Expo managed workflow:
+   ```npx expo run:ios
+      npx expo run:android

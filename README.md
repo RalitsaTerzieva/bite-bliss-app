@@ -24,7 +24,7 @@ Make sure you have the following installed on your machine:
 
 1. Clone the repository and install dependencies:
    ```bash
-   git clone https://github.com/yourusername/bite-bliss-app.git
+   git clone https://github.com/RalitsaTerzieva/bite-bliss-app/tree/main
    cd bite-bliss-app
    npm install
 

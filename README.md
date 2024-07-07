@@ -29,19 +29,24 @@ Make sure you have the following installed on your machine:
    npm install
 
 2. Install CocoaPods dependencies (iOS only):
-   ```cd ios
+   ```bash
+   cd ios
    pod install
    cd .. 
 
 3. Start the Metro bundler:
-   ```npm start
+   ```bash
+   npm start
 
 4. Run on iOS simulator (requires Xcode and macOS):
-   ```i
+   ```bash
+   i
 
 5. Run on Android emulator/device (requires Android Studio and setup):
-   ```a
+   ```bash
+   a
 
 6. Alternatively, for Expo managed workflow:
-   ```npx expo run:ios
-      npx expo run:android
+   ```bash
+   npx expo run:ios
+   npx expo run:android

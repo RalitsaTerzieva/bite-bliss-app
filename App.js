@@ -3,10 +3,24 @@ import { StyleSheet, StatusBar, Button } from 'react-native';
 import CategoryScreen from './screens/CategoryScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import MealsOverviewScreen from './screens/MealsOverviewScreen';
 import MealDetailScreen from './screens/MealDetailScreen';
+import FavouriteScreen from './screens/FavouriteScreen';
 
 const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
+
+function DrawerNavigator() {
+  return (
+  <Drawer.Navigator screenOptions={{headerStyle: { backgroundColor: '#dea32c' }}}>
+    <Drawer.Screen name='Categories' component={CategoryScreen} options={{
+      title: 'All Categories'
+    }}/>
+    <Drawer.Screen name='Favourites' component={FavouriteScreen}/>
+  </Drawer.Navigator>
+  )
+}
 
 export default function App() {
   return (
@@ -15,10 +29,10 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerStyle: { backgroundColor: '#dea32c' }}}>
         <Stack.Screen 
-        name="MealsCategories" 
-        component={CategoryScreen}
+        name="DrawerScreen" 
+        component={DrawerNavigator}
         options={{
-          title: 'Meals Categories'
+          headerShown: false
         }}
         />
         <Stack.Screen 
@@ -28,6 +42,9 @@ export default function App() {
         <Stack.Screen 
         name="MealDetails" 
         component={MealDetailScreen}
+        options={{
+          title: 'About the Meal'
+        }}
         />
       </Stack.Navigator>
     </NavigationContainer>

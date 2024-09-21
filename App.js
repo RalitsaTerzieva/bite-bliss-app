@@ -30,7 +30,6 @@ export default function App() {
     <>
     <StatusBar style='light' />
     <Provider store={store}>
-    {/* <FavoritesContextProvider> */}
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerStyle: { backgroundColor: '#dea32c' }}}>
         <Stack.Screen 
@@ -54,7 +53,6 @@ export default function App() {
       </Stack.Navigator>
     </NavigationContainer>
     </Provider>
-    {/* </FavoritesContextProvider> */}
     </>
   );
 }

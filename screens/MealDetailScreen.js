@@ -40,7 +40,8 @@ function MealDetailScreen({ route, navigation }) {
        });
     }, [navigation, changeFavoriteStatusHandler]);
 
-    return <ScrollView style={styles.rootContainer}>
+    return (
+    <ScrollView style={styles.rootContainer}>
         <Image source={{uri: selectedMeal.imageUrl}} style={styles.image}/>
         <Text style={styles.title}>{selectedMeal.title}</Text>
         <MealDetails 
@@ -58,6 +59,7 @@ function MealDetailScreen({ route, navigation }) {
             </View>
         </View>
     </ScrollView>
+    )
 }
 
 export default MealDetailScreen;

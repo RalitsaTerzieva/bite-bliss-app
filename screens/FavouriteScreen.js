@@ -4,7 +4,7 @@ import MealsList from '../components/MealsList/MealsList';
 import { MEALS } from '../data/dummy-data';
 import { useSelector, useDispatch } from 'react-redux';
 
-function FavouriteScreen() {
+function FavoriteScreen() {
     //const favoriteContext = useContext(FavoritesContext);
     const favoriteMealIds = useSelector((state) => state.favoritesMeals.ids || []);
 
@@ -20,7 +20,7 @@ function FavouriteScreen() {
     return <MealsList items={favoriteMeals}/>
 }
 
-export default FavouriteScreen;
+export default FavoriteScreen;
 
 const styles = StyleSheet.create({
     rootContainer: {

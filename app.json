@@ -37,5 +37,14 @@
         "projectId": "10e55cca-d16c-4c7a-b0a7-0b4b0348be80"
       }
     }
-  }
+  },
+  "plugins": [
+    [
+      "expo-notifications",
+      {
+        "icon": "./local/assets/icon.png",
+        "color": "#ffffff"
+      }
+    ]
+  ]
 }

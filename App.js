@@ -1,4 +1,5 @@
 import 'react-native-gesture-handler';
+import { useEffect } from 'react';
 import { StyleSheet, StatusBar, Button, View, Platform } from 'react-native';
 import CategoryScreen from './screens/CategoryScreen';
 import { NavigationContainer } from '@react-navigation/native';
@@ -40,6 +41,14 @@ function DrawerNavigator() {
 }
 
 export default function App() {
+  useEffect(() => {
+    Notifications.addNotificationReceivedListener((notification) => {
+      console.log|('Notification received')
+      const userName = notification.request.content.data.userName;
+    });
+    return () => subscription.remove();
+  }, []);
+
   async function scheduleNotificationHandler(){
     const { status } = await Notifications.requestPermissionsAsync();
     if (status !== 'granted') {

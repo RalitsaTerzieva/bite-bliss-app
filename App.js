@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import { StyleSheet, StatusBar} from 'react-native';
+import { StyleSheet, StatusBar, Button} from 'react-native';
 import CategoryScreen from './screens/CategoryScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -15,6 +15,17 @@ import * as Notifications from 'expo-notifications';
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
+//runs when the app starts
+Notifications.setNotificationHandler({
+  handleNotification: async () => {
+    return {
+      shouldPlaySound: false,
+      shouldSetBadge: false,
+      shouldShowAlert: true
+    };
+  }
+});
+
 function DrawerNavigator() {
   return (
   <Drawer.Navigator screenOptions={{headerStyle: { backgroundColor: '#dea32c' }}}>
@@ -27,7 +38,13 @@ function DrawerNavigator() {
 }
 
 export default function App() {
-  function scheduleNotificationHandler(){
+  async function scheduleNotificationHandler(){
+    const { status } = await Notifications.requestPermissionsAsync();
+    if (status !== 'granted') {
+      alert('Permission not granted!');
+      return;
+    }
+    
     Notifications.scheduleNotificationAsync({
       content: {
         title: 'My first local notifications',
@@ -43,6 +60,7 @@ export default function App() {
     <>
     <StatusBar style='light' />
     <Provider store={store}>
+    <Button title='Notifications' onPress={scheduleNotificationHandler}/>
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerStyle: { backgroundColor: '#dea32c' }}}>
         <Stack.Screen 

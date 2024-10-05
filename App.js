@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import { StyleSheet, StatusBar, Button} from 'react-native';
+import { StyleSheet, StatusBar, Button, View, Platform } from 'react-native';
 import CategoryScreen from './screens/CategoryScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -28,12 +28,14 @@ Notifications.setNotificationHandler({
 
 function DrawerNavigator() {
   return (
-  <Drawer.Navigator screenOptions={{headerStyle: { backgroundColor: '#dea32c' }}}>
-    <Drawer.Screen name='Categories' component={CategoryScreen} options={{
-      title: 'All Categories'
-    }}/>
-    <Drawer.Screen name='Favourites' component={FavoriteScreen}/>
-  </Drawer.Navigator>
+    <>
+    <Drawer.Navigator screenOptions={{headerStyle: { backgroundColor: '#dea32c' }}}>
+      <Drawer.Screen name='Categories' component={CategoryScreen} options={{
+        title: 'All Categories'
+      }}/>
+      <Drawer.Screen name='Favourites' component={FavoriteScreen}/>
+    </Drawer.Navigator>
+   </>
   )
 }
 
@@ -60,8 +62,12 @@ export default function App() {
     <>
     <StatusBar style='light' />
     <Provider store={store}>
-    <Button title='Notifications' onPress={scheduleNotificationHandler}/>
     <NavigationContainer>
+      <View style={styles.container}>
+          <View style={styles.notificationButton}>
+            <Button title='Notifications' onPress={scheduleNotificationHandler} />
+          </View>
+      </View>
       <Stack.Navigator screenOptions={{headerStyle: { backgroundColor: '#dea32c' }}}>
         <Stack.Screen 
         name="DrawerScreen" 
@@ -89,5 +95,15 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  
+  container: {
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+  notificationButton: {
+    width: '80%',
+    margin: 20,
+    backgroundColor: '#FFB6C1',
+    borderRadius: 5,
+    marginTop: Platform.OS === 'ios' ? 50 : 20,
+  },
 });

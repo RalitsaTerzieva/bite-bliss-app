@@ -6,9 +6,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import MealsOverviewScreen from './screens/MealsOverviewScreen';
 import MealDetailScreen from './screens/MealDetailScreen';
-import FavouriteScreen from './screens/FavouriteScreen';
+import FavoriteScreen from './screens/FavouriteScreen';
 import { Provider } from 'react-redux'
 import { store } from './store/redux/store';
+import * as Notifications from 'expo-notifications';
 //import FavoritesContextProvider from './store/context/favourite-context';
 
 const Stack = createNativeStackNavigator();
@@ -20,12 +21,24 @@ function DrawerNavigator() {
     <Drawer.Screen name='Categories' component={CategoryScreen} options={{
       title: 'All Categories'
     }}/>
-    <Drawer.Screen name='Favourites' component={FavouriteScreen}/>
+    <Drawer.Screen name='Favourites' component={FavoriteScreen}/>
   </Drawer.Navigator>
   )
 }
 
 export default function App() {
+  function scheduleNotificationHandler(){
+    Notifications.scheduleNotificationAsync({
+      content: {
+        title: 'My first local notifications',
+        body: 'This is the body of the notifications',
+        data: { userName: 'Clara' }
+      },
+      trigger: {
+        seconds: 5
+      }
+    })
+  }
   return (
     <>
     <StatusBar style='light' />

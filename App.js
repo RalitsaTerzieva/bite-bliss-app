@@ -42,11 +42,21 @@ function DrawerNavigator() {
 
 export default function App() {
   useEffect(() => {
-    Notifications.addNotificationReceivedListener((notification) => {
+    const subscription = Notifications.addNotificationReceivedListener((notification) => {
       console.log|('Notification received')
       const userName = notification.request.content.data.userName;
     });
-    return () => subscription.remove();
+
+    const subscription2 =Notifications.addNotificationResponseReceivedListener((response) => {
+      console.log|('Notification Response received')
+      const userName = response.notification.request.content.data.userName;
+      console.log(userName)
+    });
+
+    return () => {
+      subscription.remove();
+      subscription2.remove();
+    }
   }, []);
 
   async function scheduleNotificationHandler(){
